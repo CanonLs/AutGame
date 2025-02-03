@@ -11,5 +11,17 @@ export default defineConfig({
       // 指定 SSR 入口文件
       serverEntry: 'src/entry-server.tsx'
     })
-  ]
+  ],
+  build: {
+    // 必须启用 SSR 构建
+    ssr: true,
+    rollupOptions: {
+      input: {
+        // 客户端入口
+        client: 'src/entry-client.tsx',
+        // 服务端入口（与插件配置保持一致）
+        server: 'src/entry-server.tsx'
+      }
+    }
+  }
 })
