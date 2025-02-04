@@ -9,7 +9,7 @@
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "preview": "cross-env NODE_ENV=production node server",
-    "vercel-build": "npm run build"
+    "vercel-build": "vite build && mv dist dist_bak && mkdir -p dist && mv dist_bak/* dist/"
   },
   "dependencies": {
     "compression": "^1.7.5",

@@ -5,18 +5,26 @@
       "src": "vite.config.js",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/client"
+        "distDir": "dist", 
+        "cleanDistDir": true
       }
     },
     {
       "src": "api/ssr.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["dist/**"] 
+      }
     }
   ],
   "routes": [
     {
-      "src": "/.*",
-      "dest": "api/ssr.js"
+      "src": "/assets/(.*)",
+      "dest": "/dist/assets/$1" 
+    },
+    {
+      "src": "/(.*)",
+      "dest": "api/ssr.js" 
     }
   ]
 }
