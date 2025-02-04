@@ -1,12 +1,8 @@
-import React, { StrictMode } from 'react'
-import ReactDOMServer from 'react-dom/server'
+import React from 'react'
+import { renderToString } from 'react-dom/server'
 import App from './App'
 
-export function render(_url: string) {
-  const html = ReactDOMServer.renderToString(
-    <StrictMode>
-      <App />
-    </StrictMode>,
-  )
+export function render() {
+  const html = renderToString(<App />)
   return { html }
 }

@@ -1,11 +1,10 @@
-import './index.css'
-import React, { StrictMode } from 'react'
-import { hydrateRoot } from 'react-dom/client'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import App from './App'
 
-hydrateRoot(
-  document.getElementById('root') as HTMLElement,
-  <StrictMode>
+ReactDOM.hydrateRoot(
+  document.getElementById('root')!,
+  <React.StrictMode>
     <App />
-  </StrictMode>,
+  </React.StrictMode>
 )

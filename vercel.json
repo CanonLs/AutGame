@@ -2,22 +2,21 @@
   "version": 2,
   "builds": [
     {
-      "src": "server/entry-server.js", 
-      "use": "@vercel/node"
+      "src": "vite.config.js",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     },
     {
-      "src": "dist/client/**", 
-      "use": "@vercel/static"
+      "src": "api/ssr.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/static/(.*)", 
-      "dest": "dist/client/static/$1"
-    },
-    {
-      "src": "/(.*)", 
-      "dest": "server/entry-server.js"
+      "src": "/.*",
+      "dest": "api/ssr.js"
     }
   ]
 }
